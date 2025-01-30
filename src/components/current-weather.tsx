@@ -22,8 +22,8 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-4">
             <div className="space-y-2">
-              <div className="flex items-center">
-                <h2 className="text-2xl font-bold tracking-tight">
+              <div className="flex gap-1 items-baseline">
+                <h2 className="text-2xl font-bold tracking-tighter">
                   {locationName?.name}
                 </h2>
                 {locationName?.state && (
@@ -39,7 +39,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
 
             <div className="flex items-center gap-2">
               <p className="text-7xl font-bold tracking-tighter">
-                {formatTemp(temp)}
+                {formatTemp(temp)}C
               </p>
               <div className="space-y-1">
                 <p className="text-sm font-medium text-muted-foreground">
