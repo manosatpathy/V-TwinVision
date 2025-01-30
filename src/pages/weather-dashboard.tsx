@@ -1,3 +1,5 @@
+import CurrentWeather from "@/components/current-weather";
+import HourlyTemperature from "@/components/hourly-temperature";
 import WeatherSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -67,7 +69,6 @@ const WeatherDashboard = () => {
   }
 
   const locationName = locationQuery.data?.[0];
-  console.log(locationName);
 
   if (weatherQuery.error || forecastQuery.error) {
     return (
@@ -95,8 +96,8 @@ const WeatherDashboard = () => {
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
         <Button
-          variant={"outline"}
-          size={"icon"}
+          variant="outline"
+          size="icon"
           onClick={handleRefresh}
           disabled={weatherQuery.isFetching || forecastQuery.isFetching}
         >
@@ -106,6 +107,20 @@ const WeatherDashboard = () => {
             }`}
           />
         </Button>
+      </div>
+
+      <div className="grid gap-6">
+        <div className="flex flex-col lg:flex-row gap-4">
+          <CurrentWeather
+            data={weatherQuery.data}
+            locationName={locationName}
+          />
+          <HourlyTemperature data={forecastQuery.data} />
+        </div>
+        <div>
+          {/* details */}
+          {/* forecast */}
+        </div>
       </div>
     </div>
   );
